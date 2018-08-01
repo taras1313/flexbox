@@ -1,0 +1,223 @@
+div {
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
+    font-size: 18px;
+}
+
+.main {
+    border: 2px solid red;
+    padding: 1px;
+}
+
+/*colors*/
+
+.white {
+    background-color: white;
+}
+.black {
+    background: black;
+}
+.pink {
+    background: pink;
+}
+.orange {
+    background: orange;
+}
+.red {
+    background: red;
+}
+.green {
+    background: green;
+}
+.blue {
+    background: blue;
+}
+
+/*sizes*/
+
+.w-80 {
+    width: 80%;   
+}
+.w-50 {
+    width: 50%;
+}
+.w-33 {
+    width: 33.333333%;
+}
+.w-25 {
+    width: 25%;
+}
+.w-10 {
+    width: 10%;
+}
+
+/*flex*/
+
+.header {
+    text-align: center;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+    align-content: flex-start;
+    height: 250px;
+}
+
+.sub_header {
+    min-height: 200px;
+    flex-basis: 80%;
+    /*якшо я хочу розмістити елемент між стартовою і центральною лініями- 
+    треба марджин?*/
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sub_sub_header {
+    min-height: 90px;
+}
+
+.menu {
+    display: flex;
+    flex-flow: row wrap;
+    text-align: center;
+    min-height: 150px;
+    align-content: flex-start;
+    padding-bottom: 9px;
+}
+
+.menu div:first-child {
+    flex-basis: 100%;
+}
+
+.menu div:nth-child(1n+2){
+    height: 120px;
+    flex: 1 1 298px;
+    /*flex-basis: 298px;*/
+    /*як врапнутий елемент обраховує з чисел вище, шо йому треба зайняти все місце?*/
+}
+
+.sections {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.sections>div {
+    flex: 1 1 398px;
+    /*flex-basis: 398px;*/
+    /*чому з таким флекс базісом врапнутий блок не займайє все місце, як в меню вище?*/
+    height: 350px;
+}
+
+.sections div:first-child {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.sections div:first-child div:first-child {
+    flex: 0 1 80%;
+    height: 25%;
+}
+.sections div:first-child div:nth-child(2) {
+    flex: 0 1 40%;
+    height: 25%;
+}
+.sections div:first-child div:last-child {
+    flex: 0 1 40%;
+    height: 25%;
+}
+
+.footer {
+    text-align: center;
+    height: 100px;
+}
+
+.sections div:nth-child(2) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-end;
+}
+
+.sections div:nth-child(2) div {
+    flex: 1;
+    height: 65%;
+}
+
+.sections div:nth-child(2) div:nth-child(2) {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.sections div:nth-child(2) div:nth-child(2) div:first-child {
+    height: 80%;
+    flex: 1;
+}
+
+.sections div:nth-child(2) div:nth-child(2) div:nth-child(2) {
+    height: 70%;
+    flex: 1;
+}
+
+.sections>div:last-child {
+    display: flex;
+    flex-flow: row wrap;
+    padding-top: 15px;
+}
+
+.sections div:last-child div:first-child {
+    height: 70%;
+    flex: 1;
+    align-self: flex-end;
+}
+
+.sections div:last-child div:nth-child(2) {
+    height: 70%;
+    flex: 1;
+    align-self: center;
+}
+
+.sections div:last-child div:nth-child(3) {
+    height: 70%;
+    flex: 1;
+    align-self: flex-start;
+}
+
+@media screen and (max-width: 720px) {
+    .sections div:nth-child(2) div:nth-child(2) {
+        flex-flow: column wrap;
+        justify-content: center;
+    }
+    .sections div:nth-child(2) div:nth-child(2) div:nth-child(1) {
+        flex: 0 1 70px;
+        width: 100%;
+    }
+    .sections div:nth-child(2) div:nth-child(2) div:nth-child(2) {
+        flex: 0 1 70px;
+        width: 100%;
+    }
+    .sections div:last-child div:first-child {
+    height: 70%;
+    flex: 1;
+    align-self: center;
+    }
+    .sections div:last-child div:nth-child(2) {
+        height: 70%;
+        flex: 1;
+        align-self: center;
+    }
+
+    .sections div:last-child div:nth-child(3) {
+        height: 70%;
+        flex: 1;
+        align-self: center;
+    }
+}
