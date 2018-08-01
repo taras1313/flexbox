@@ -185,11 +185,39 @@ body {
     align-self: center;
 }
 
-.sections div:last-child div:nth-child(3) {
+.sections div:last-child>div:nth-child(3) {
     height: 70%;
     flex: 1;
     align-self: flex-start;
+    display: flex;
+    align-items: center;
+    justify-content: center
 }
+
+.sections div:last-child>div:nth-child(3)>div {
+    height: 50px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-self: center;
+    justify-content: space-between;
+}
+
+.sections div:last-child>div:nth-child(3)>div>div:first-child {
+    flex-grow: 0;
+    flex-basis: 45px;
+    justify-self: flex-start;
+    align-self: flex-end;
+    height: 25px;
+}
+
+.sections div:last-child>div:nth-child(3)>div>div:last-child {
+    flex-grow: 0;
+    flex-basis: 45px;
+    justify-self: flex-end;
+    align-self: flex-start;
+    height: 25px;
+}
+
 
 @media screen and (max-width: 720px) {
     .sections div:nth-child(2) div:nth-child(2) {
