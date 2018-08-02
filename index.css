@@ -1,3 +1,6 @@
+/*яка різниця між space around & space evenly*/
+/*flex: 1 як він працює? чому можна обійтись без інших величин?*/
+
 div {
     box-sizing: border-box;
 }
@@ -38,49 +41,42 @@ body {
     background: blue;
 }
 
-/*sizes*/
-
-.w-80 {
-    width: 80%;   
-}
-.w-50 {
-    width: 50%;
-}
-.w-33 {
-    width: 33.333333%;
-}
-.w-25 {
-    width: 25%;
-}
-.w-10 {
-    width: 10%;
-}
-
 /*flex*/
 
 .header {
     text-align: center;
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
+    /*flex-flow: column nowrap;*/
+    flex-flow: row wrap;
+    /*justify-content: flex-start;*/
+    justify-content: center;
     align-items: center;
     align-content: flex-start;
-    height: 250px;
+    min-height: 300px;
+}
+
+.header>div:first-child {
+    width: 100%;
+    align-self: flex-start;
 }
 
 .sub_header {
     min-height: 200px;
-    flex-basis: 80%;
-    /*якшо я хочу розмістити елемент між стартовою і центральною лініями- 
-    треба марджин?*/
+    flex-basis: 70%;
     display: flex;
-    flex-flow: column nowrap;
-    justify-content: flex-start;
-    align-items: center;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.sub_header>div:nth-child(2), .sub_header>div:nth-child(3) {
+    flex: 0 1 45%;
+    height: 70px;
 }
 
 .sub_sub_header {
-    min-height: 90px;
+    height: 70px;
+    flex: 0 1 70%;
 }
 
 .menu {
@@ -99,9 +95,68 @@ body {
 .menu div:nth-child(1n+2){
     height: 120px;
     flex: 1 1 298px;
-    /*flex-basis: 298px;*/
-    /*як врапнутий елемент обраховує з чисел вище, шо йому треба зайняти все місце?*/
 }
+
+.menu>div:nth-child(2), .menu>div:nth-child(3) {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu>div:nth-child(2)>div {
+    flex: 1;
+    height: 70%;
+    /*margin-top: 15px;*/
+}
+
+.menu>div:nth-child(3)>div {
+    flex: 0 1 80%;
+    /*justify-self: center; чого не працює?*/
+    height: 70%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    /*margin-top: 15px; чи нормальна практика використовувати марджин з флексом?*/
+}
+
+.menu>div:nth-child(3)>div>div {
+    flex: 0 1 30%;
+    height: 60%;
+}
+
+.menu>div:nth-child(4) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu>div:nth-child(4)>div {
+    height: 60%;
+    flex: 0 1 33%;
+    /*margin-top: 15px;*/
+}
+
+.menu>div:nth-child(5) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu>div:nth-child(5)>div {
+    height: 70%;
+    flex: 0 1 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu>div:nth-child(5)>div>div {
+    flex: 0 1 45%;
+    height: 60%;
+} 
+
 
 .sections {
     display: flex;
@@ -110,8 +165,6 @@ body {
 
 .sections>div {
     flex: 1 1 398px;
-    /*flex-basis: 398px;*/
-    /*чому з таким флекс базісом врапнутий блок не займайє все місце, як в меню вище?*/
     height: 350px;
 }
 
@@ -126,18 +179,43 @@ body {
     flex: 0 1 80%;
     height: 25%;
 }
+
 .sections div:first-child div:nth-child(2) {
     flex: 0 1 40%;
     height: 25%;
 }
+
 .sections div:first-child div:last-child {
     flex: 0 1 40%;
     height: 25%;
 }
 
-.footer {
-    text-align: center;
-    height: 100px;
+.sections>div:nth-child(2)>div:first-child {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.sections>div:nth-child(2)>div:first-child>div {
+    flex: 0 1 40%;
+    width: 80%;
+    /*flex basis задає в колонці висоту, чи правильно так задавати ширину?*/
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.sections>div:nth-child(2)>div:first-child>div:first-child>div {
+    flex: 0 1 80%;
+    height: 70%;
+}
+
+.sections>div:nth-child(2)>div:first-child>div:nth-child(2)>div {
+    flex: 0 1 40%;
+    height: 50%;
+    align-self: center;
 }
 
 .sections div:nth-child(2) {
@@ -173,10 +251,19 @@ body {
     padding-top: 15px;
 }
 
-.sections div:last-child div:first-child {
+.sections>div:last-child>div:first-child {
     height: 70%;
     flex: 1;
     align-self: flex-end;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sections>div:last-child>div:first-child>div {
+    flex: 0 1 30%;
+    height: 60%;
 }
 
 .sections div:last-child div:nth-child(2) {
@@ -191,31 +278,58 @@ body {
     align-self: flex-start;
     display: flex;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    flex-flow: column nowrap;
 }
 
-.sections div:last-child>div:nth-child(3)>div {
-    height: 50px;
+.sections div:last-child>div:nth-child(3)>div:first-child {
+    /*height: 50px;*/
+    flex-basis: 30%;
+    width: 100%;
     display: flex;
     flex-flow: row nowrap;
     align-self: center;
     justify-content: space-between;
 }
 
+.sections div:last-child>div:nth-child(3)>div:last-child {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    flex: 0 1 40%;
+    width: 100%;
+}
+
+
 .sections div:last-child>div:nth-child(3)>div>div:first-child {
     flex-grow: 0;
-    flex-basis: 45px;
+    flex-basis: auto;
     justify-self: flex-start;
     align-self: flex-end;
     height: 25px;
+    height: auto;
+    padding: 4px;
 }
 
 .sections div:last-child>div:nth-child(3)>div>div:last-child {
     flex-grow: 0;
-    flex-basis: 45px;
+    flex-basis: auto;
     justify-self: flex-end;
-    align-self: flex-start;
-    height: 25px;
+    /*align-self: flex-start;*/
+    height: auto;
+    padding: 4px;
+}
+
+.sections div:last-child>div:nth-child(3)>div:last-child>div {
+    flex: 0 1 40% ;
+    height: 70% ;
+    align-self: center;
+}
+
+
+.footer {
+    text-align: center;
+    height: 100px;
 }
 
 
